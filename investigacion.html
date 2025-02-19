@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigación - Vitality Go</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #0A192F;
+            --color-secondary: #172A45;
+            --color-accent: #64FFDA;
+            --color-text: #CCD6F6;
+            --color-dark: #020C1B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--color-dark);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* Navbar Premium */
+        .navbar-premium {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #64FFDA, #00BFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background: var(--color-accent);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: var(--color-accent);
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 4rem 4rem;
+            background: linear-gradient(135deg, #0A192F 0%, #172A45 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #64FFDA, #00BFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Research Section */
+        .research-content {
+            background: rgba(23, 42, 69, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(100, 255, 218, 0.15);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .research-content:hover {
+            transform: translateY(-10px);
+        }
+
+        .research-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent);
+        }
+
+        .research-content p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            color: var(--color-dark);
+            background: var(--color-accent);
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-button:hover {
+            background: #00BFFF;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .navbar-premium {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: var(--color-primary);
+                flex-direction: column;
+                padding: 7rem 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-title {
+                font-size: 3rem;
+            }
+
+            .hero-section {
+                padding: 8rem 2rem 4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .research-content {
+                padding: 1.5rem;
+            }
+
+            .research-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .research-content p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Premium -->
+    <nav class="navbar-premium">
+        <div class="nav-logo">VitalityGo</div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="inicio.html" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="detalles.html" class="nav-link">Detalles</a></li>
+            <li class="nav-item"><a href="grupo.html" class="nav-link">Grupo</a></li>
+            <li class="nav-item"><a href="herramientas.html" class="nav-link">Herramientas</a></li>
+            <li class="nav-item"><a href="investigacion.html" class="nav-link active">Investigación</a></li>
+            <li class="nav-item"><a href="descarga.html" class="nav-link">Descarga</a></li>
+        </ul>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="main-title">Investigación</h1>
+            <p class="hero-description">
+                Descubre el informe detallado de nuestra investigación y cómo Vitality Go está revolucionando el monitoreo de actividad física.
+            </p>
+
+            <div class="research-content">
+                <h2>Descarga el Informe</h2>
+                <p>
+                    Puedes descargar el informe completo de nuestra investigación en el siguiente enlace. Este documento contiene todos los detalles técnicos, metodológicos y resultados obtenidos durante el desarrollo de Vitality Go.
+                </p>
+                <a href="informe.pdf" download class="download-button">Descargar Informe</a>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScrtvgG297imU8pA5rZe2Y92W6nMxM4Hw2-xvhcF8WTh1LeSw/viewform?embedded=true" width="640" height="6162" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en enlace
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Animación al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.research-content').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

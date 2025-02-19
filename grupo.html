@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo - Vitality Go</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+    --color-primary: #0A192F;
+    --color-secondary: #172A45;
+    --color-accent: #64FFDA;
+    --color-text: #CCD6F6;
+    --color-dark: #020C1B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--color-dark);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* Navbar Premium */
+.navbar-premium {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 4rem;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 25, 47, 0.98);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #64FFDA, #00BFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background: var(--color-accent);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: var(--color-accent);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    color: var(--color-accent);
+    font-size: 1.5rem;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 4rem 4rem;
+    background: linear-gradient(135deg, #0A192F 0%, #172A45 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 1200px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.main-title {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #64FFDA, #00BFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Team Section */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Se amplía el ancho mínimo */
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.team-member {
+    background: rgba(23, 42, 69, 0.6);
+    backdrop-filter: blur(12px);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(100, 255, 218, 0.15);
+    transition: transform 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-accent);
+    margin-bottom: 1.5rem;
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-accent);
+}
+
+.team-member p {
+    font-size: 1rem;
+    margin: 0.4rem 0;
+    opacity: 0.9;
+    word-break: break-word; /* Evita que el Gmail sobresalga */
+}
+
+.team-member .role {
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+.team-member .email {
+    color: var(--color-text);
+    opacity: 0.8;
+    display: inline-block;
+    max-width: 100%;
+    word-break: break-word; /* Evita que el Gmail se salga */
+}
+
+.team-member .description {
+    font-style: italic;
+    margin-top: 1rem;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar-premium {
+        padding: 1.5rem 2rem;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background: var(--color-primary);
+        flex-direction: column;
+        padding: 7rem 2rem;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-title {
+        font-size: 3rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-section {
+        padding: 8rem 2rem 4rem;
+    }
+
+    .team-member img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .team-member h3 {
+        font-size: 1.3rem;
+    }
+
+    .team-member p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .team-member {
+        padding: 1.5rem;
+    }
+
+    .team-member img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .team-member h3 {
+        font-size: 1.2rem;
+    }
+
+    .team-member p {
+        font-size: 0.85rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navbar Premium -->
+    <nav class="navbar-premium">
+        <div class="nav-logo">VitalityGo</div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="inicio.html" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="detalles.html" class="nav-link">Detalles</a></li>
+            <li class="nav-item"><a href="grupo.html" class="nav-link active">Grupo</a></li>
+            <li class="nav-item"><a href="herramientas.html" class="nav-link">Herramientas</a></li>
+            <li class="nav-item"><a href="investigacion.html" class="nav-link">Investigación</a></li>
+            <li class="nav-item"><a href="descarga.html" class="nav-link">Descarga</a></li>
+        </ul>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="main-title">Nuestro Equipo</h1>
+            <p class="hero-description">
+                Conoce al equipo detrás de Vitality Go, los creadores que hicieron posible esta innovadora aplicación.
+            </p>
+
+            <div class="team-grid">
+                <!-- Miembro 1 -->
+                <div class="team-member">
+                    <img src="IMG GRUPO/mati.jpg" alt="Matias Julian Moscoso Paredes">
+                    <h3>Matias Julian Moscoso Paredes</h3>
+                    <p class="role">Desarrollo de Informe IEEE</p>
+                    <p class="email">matias.moscosop.est@uets.edu.ec</p>
+                    <p class="description">Se encargó del desarrollo y corrección del informe teórico sobre todo lo que se hizo en la página web y en la app móvil.</p>
+                </div>
+
+                <!-- Miembro 2 -->
+                <div class="team-member">
+                    <img src="IMG GRUPO/naula.jpg" alt="David Alejandro Naula Ochoa">
+                    <h3>David Alejandro Naula Ochoa</h3>
+                    <p class="role">Desarrollo Frontend y Backend</p>
+                    <p class="email">david.naulao.est@uets.edu.ec</p>
+                    <p class="description">Diseñó la interfaz y la experiencia de usuario de la aplicación, además del desarrollo lógico de la app móvil.</p>
+                </div>
+
+                <!-- Miembro 3 -->
+                <div class="team-member">
+                    <img src="IMG GRUPO/picho.jpg" alt="Christian Daniel Samaniego Romero">
+                    <h3>Christian Daniel Samaniego Romero</h3>
+                    <p class="role">Desarrollo de Frontend</p>
+                    <p class="email">christian.samaniegor.est@uets.edu.ec</p>
+                    <p class="description">Fue el encargado de desarrollar interfaces atractivas e interactivas para la app móvil.</p>
+                </div>
+
+                <!-- Miembro 4 -->
+                <div class="team-member">
+                    <img src="IMG GRUPO/esteban.jpg" alt="Esteban Nicolás Vásquez Ortega">
+                    <h3>Esteban Nicolás Vásquez Ortega</h3>
+                    <p class="role">Desarrollo de Frontend y Backend</p>
+                    <p class="email">esteban.vasquezo.est@uets.edu.ec</p>
+                    <p class="description">Realizó la interfaz gráfica y desarrolló el sistema lógico de la app móvil.</p>
+                </div>
+
+                <!-- Miembro 5 -->
+                <div class="team-member">
+                    <img src="img/integrante5.jpg" alt="Milton Velasquez">
+                    <h3>Milton Velasquez</h3>
+                    <p class="role">Tutor de Tesis</p>
+                    <p class="email">integrante5@example.com</p>
+                    <p class="description">Realizó controles de avances para nuestro correcto avance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en enlace
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Animación al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.team-member').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
